@@ -16,8 +16,13 @@ app.use(express.json());
 // Statische Dateien
 app.use(express.static('public'));
 
-// Startseite
+// STARTSEITE = login.html
 app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/login.html');
+});
+
+// WICHTIG: Auch /login.html muss funktionieren!
+app.get('/login.html', (req, res) => {
   res.sendFile(__dirname + '/public/login.html');
 });
 
