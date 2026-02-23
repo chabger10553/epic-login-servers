@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const app = express();
 
-// CORS manuell setzen
+// CORS manuell (ohne cors Paket)
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
